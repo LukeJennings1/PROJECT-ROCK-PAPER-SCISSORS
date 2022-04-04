@@ -22,25 +22,53 @@ function computerPlay(){
             return "scissors"; }
 }
 
-const mainbody = function playerSelection(input, computerOutput) {
-   input = input.toLowerCase() // this line changes the input arguements to lowercase before they reach the OR statements (hence having them at the top as JS renders from the top down // 
-      if (input === computerOutput) { // this line reduces the amount of code we need to a tie from three options (one per potential arguement) // 
+const computerOutput = computerPlay();
+
+function humanPlay(playerinput){
+    if (playerinput == "rock") { 
+      return "rock"; }
+      if (playerinput == "paper"){
+         return "paper"; }
+            if (playerinput == "scissors"){
+               return "scissors" }
+}
+
+const playerOutput = humanPlay("rock");
+
+const comparitor = function playerSelection(playerOutput, computerOutput) {
+   playerOutput = playerOutput.toLowerCase() // this line changes the input arguements to lowercase before they reach the OR statements (hence having them at the top as JS renders from the top down // 
+      if (playerOutput === computerOutput) { // this line reduces the amount of code we need to a tie from three options (one per potential arguement) // 
             return "tie"; }
-      if (input == "paper" && computerOutput == "scissors") {
+      if (playerOutput == "paper" && computerOutput == "scissors") {
             return "computer wins "; }
-      if (input == "paper" && computerOutput == "rock") {
+      if (playerOutput == "paper" && computerOutput == "rock") {
             return "You win"; }
-      if (input == "scissors" && computerOutput == "paper") {
+      if (playerOutput == "scissors" && computerOutput == "paper") {
             return "You win"; }
-      if (input == "scissors" && computerOutput == "rock") {
+      if (playerOutput == "scissors" && computerOutput == "rock") {
             return "computer wins "; }
-      if (input =="rock" && computerOutput == "scissors") {
+      if (playerOutput =="rock" && computerOutput == "scissors") {
             return "You win"; }
-      if (input == "rock" && computerOutput == "paper") {
+      if (playerOutput == "rock" && computerOutput == "paper") {
             return "computer wins"; }
 }
-const computerOutput = computerPlay();
-const playerOutput = mainbody("Paper" , computerOutput);
-console.log(playerOutput);
+const comparitoroutput = comparitor(playerOutput, computerOutput);
 
-
+// This is the bestof5 loop that computes a winner of the game // 
+const gameloop = function bestof5(comparitoroutput){
+let computer = 0;
+let player = 0;
+   
+   for (let i = 0; i < 5; i++) {
+      if (comparitoroutput === "computer wins"){
+         player++;
+      } else {
+         computer++; } 
+      if (player >= 3) {
+         return "YOU WIN!"; }
+      if (computer >= 3) {
+         return "COMPUTER WINS!"; }
+}
+}
+const bestof5output = gameloop(comparitoroutput);
+console.log(bestof5output);
