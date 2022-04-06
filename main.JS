@@ -1,74 +1,74 @@
-
-/* -  Rock, Paper and Scissors Game
-Make an option where we can pick either rock paper scissors
-have the computer randomly pick one of the three also
-compare the two results against eachother
-declare a winner
-*/
-
-/*  if ("Rock" === "Rock");
-   if ("Paper" === "Paper");
-   if ("Scissors" === "Scissors");
-   return "game is a tie" */
-   
-   
-function computerPlay(){
-        let numberGen = Math.floor(Math.random() * 3 + 1);
-        if (numberGen === 1 ) {
-            return  "rock"; }
-        if (numberGen === 2) {
-            return "paper"; }
-         if (numberGen === 3) {
-            return "scissors"; }
+function AI(){
+  let numberGen = Math.floor(Math.random() * 3 + 1);
+  if (numberGen === 1 ) {
+      console.log("computer picked rock");
+      return  "rock"; }
+  if (numberGen === 2) {
+      console.log("computer picked paper");
+      return "paper"; }
+   if (numberGen === 3) {
+      console.log("computer picked scissors");
+      return "scissors"; }
 }
-
-const computerOutput = computerPlay();
-
-function humanPlay(playerinput){
-    if (playerinput == "rock") { 
-      return "rock"; }
-      if (playerinput == "paper"){
-         return "paper"; }
-            if (playerinput == "scissors"){
-               return "scissors" }
+function player(){
+  let playerinput = window.prompt("Rock, Paper or scissors?").toLowerCase();
+      if (playerinput === "rock") {
+          console.log("You picked Rock"); 
+          return "rock"}
+      if (playerinput ===  "paper") {
+          console.log("You picked paper"); 
+          return "paper" }
+      if (playerinput === "scissors") {
+          console.log ("You picked scissors"); 
+          return "scissors" }
 }
+function playround(playerSelection, computerSelection){
+      if (playerSelection == computerSelection) {
+          console.log("TIE"); 
+          return "TIE"}
+        if (playerSelection === "paper" && computerSelection === "scissors"){
+          console.log ("Computer Wins");
+          return "computer wins";}
+        if (playerSelection === "paper" && computerSelection === "rock"){
+          console.log ("You win");
+          return "player wins";}
+        if (playerSelection === "scissors" && computerSelection === "paper"){
+        console.log ("You win");
+          return "player wins";}
+        if (playerSelection === "scissors" && computerSelection === "rock"){
+          console.log ("Computer Wins");
+          return "computer wins";}
+        if (playerSelection === "rock" && computerSelection === "scissors"){
+          console.log ("You win");
+          return "player wins";}
+        if (playerSelection === "rock" && computerSelection === "paper"){
+        console.log ("Computer Wins");
+          return "computer wins";}
+}                 
+function game(){
+let gamer = 0
+let computer = 0
 
-const playerOutput = humanPlay("rock");
 
-const comparitor = function playerSelection(playerOutput, computerOutput) {
-   playerOutput = playerOutput.toLowerCase() // this line changes the input arguements to lowercase before they reach the OR statements (hence having them at the top as JS renders from the top down // 
-      if (playerOutput === computerOutput) { // this line reduces the amount of code we need to a tie from three options (one per potential arguement) // 
-            return "tie"; }
-      if (playerOutput == "paper" && computerOutput == "scissors") {
-            return "computer wins "; }
-      if (playerOutput == "paper" && computerOutput == "rock") {
-            return "You win"; }
-      if (playerOutput == "scissors" && computerOutput == "paper") {
-            return "You win"; }
-      if (playerOutput == "scissors" && computerOutput == "rock") {
-            return "computer wins "; }
-      if (playerOutput =="rock" && computerOutput == "scissors") {
-            return "You win"; }
-      if (playerOutput == "rock" && computerOutput == "paper") {
-            return "computer wins"; }
-}
-const comparitoroutput = comparitor(playerOutput, computerOutput);
+  for (let i = 0; i < 5; i++) { 
+  let roundoutput = playround(player(),AI());
+  if (roundoutput === "player wins") {
+      gamer++;
+      console.log("YOU WON!");
+  } else if (roundoutput === "computer wins") {
+      computer++;
+      console.log("YOU WON!");
+  } if (roundoutput === "TIE") {
+      console.log("TIE");
+  }
 
-// This is the bestof5 loop that computes a winner of the game // 
-const gameloop = function bestof5(comparitoroutput){
-let computer = 0;
-let player = 0;
-   
-   for (let i = 0; i < 5; i++) {
-      if (comparitoroutput === "computer wins"){
-         player++;
-      } else {
-         computer++; } 
-      if (player >= 3) {
-         return "YOU WIN!"; }
-      if (computer >= 3) {
-         return "COMPUTER WINS!"; }
+  if (gamer > computer);
+  console.log("YOU WON THE GAME!", gamer);
+  if (computer > gamer);
+  console.log("COMPUTER WINS THE GAME!",computer);
+  if (computer === gamer);
+
 }
 }
-const bestof5output = gameloop(comparitoroutput);
-console.log(bestof5output);
+game()
+
