@@ -1,18 +1,18 @@
 
-const firstButton = document.querySelector('button_one');
+const firstButton = document.querySelector('.button1');
 firstButton.addEventListener('click', () => {
-
-
-
+  console.log('you pircked rock');
+  playround('rock', AI())
 });
-
-const secondButton = document.querySelector('button_two')
+const secondButton = document.querySelector('.button2')
 secondButton.addEventListener('click', () => {
-
+  console.log('you pircked paper');
+  playround('paper', AI())
 });
-const thirdButton = document.querySelector('button_three')
+const thirdButton = document.querySelector('.button3')
 thirdButton.addEventListener('click', () => {
-
+  console.log('you pircked scissors');
+  playround('scissors', AI())
 });
 
 function AI(){ /* this produces a random output or rock, paper or scissors*/
@@ -30,8 +30,30 @@ if (numberGen === 2) {
     console.log("computer picked scissors");
     return "scissors"; }
 }
+function playround(playerSelection, computerSelection){
+  if (playerSelection == computerSelection) {
+      console.log("TIE"); 
+      return "TIE"}
+    if (playerSelection === "paper" && computerSelection === "scissors"){
+      console.log ("Computer Wins");
+      return "computer wins";}
+    if (playerSelection === "paper" && computerSelection === "rock"){
+      console.log ("You win");
+      return "player wins";}
+    if (playerSelection === "scissors" && computerSelection === "paper"){
+    console.log ("You win");
+      return "player wins";}
+    if (playerSelection === "scissors" && computerSelection === "rock"){
+      console.log ("Computer Wins");
+      return "computer wins";}
+    if (playerSelection === "rock" && computerSelection === "scissors"){
+      console.log ("You win");
+      return "player wins";}
+    if (playerSelection === "rock" && computerSelection === "paper"){
+    console.log ("Computer Wins");
+      return "computer wins";}
+}      
 
-yesyeysyesyesy
 
 
 
@@ -46,51 +68,6 @@ yesyeysyesyesy
 
 
 
-
-// function player(){ /* this is the function that prompts the user for input and outputs result
-//                   .lowercaase() changes all letters to lower case so that the input is okay */
-//   //let playerinput = window.prompt("Rock, Paper or scissors?").toLowerCase();
-//       if (playerinput === "rock") {
-//           console.log("You picked Rock"); 
-//           return "rock"}
-//       if (playerinput ===  "paper") {
-//           console.log("You picked paper"); 
-//           return "paper" }
-//       if (playerinput === "scissors") {
-//           console.log ("You picked scissors"); 
-//           return "scissors" }
-// }
-// /* this takes the input from the two previous functions and compares them, producing a result,
-// note that the parameters (player selection and computer selection) are called within the 
-// function game () function below. */
-// function playround(playerSelection, computerSelection){
-//       if (playerSelection == computerSelection) {
-//           console.log("TIE"); 
-//           return "TIE"}
-//         if (playerSelection === "paper" && computerSelection === "scissors"){
-//           console.log ("Computer Wins");
-//           return "computer wins";}
-//         if (playerSelection === "paper" && computerSelection === "rock"){
-//           console.log ("You win");
-//           return "player wins";}
-//         if (playerSelection === "scissors" && computerSelection === "paper"){
-//         console.log ("You win");
-//           return "player wins";}
-//         if (playerSelection === "scissors" && computerSelection === "rock"){
-//           console.log ("Computer Wins");
-//           return "computer wins";}
-//         if (playerSelection === "rock" && computerSelection === "scissors"){
-//           console.log ("You win");
-//           return "player wins";}
-//         if (playerSelection === "rock" && computerSelection === "paper"){
-//         console.log ("Computer Wins");
-//           return "computer wins";}
-// }                 
-// /* this is a very important function as it allows the code to loop 5 times and produce a result
-// that is logged everytime. It also calls the playround function (above) with the arguements
-// being the computer input and playerinput. IT MUST call this function inside the loop as 
-// it tells the code to loop the prompt for input 5 times (otherwise the code will accept one
-//   prompt for 5 inputs) */
 
 
 // // function game(){ 
