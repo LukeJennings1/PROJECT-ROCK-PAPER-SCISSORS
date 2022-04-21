@@ -1,66 +1,91 @@
+/* need to add a display so that current console.logs are displayed on the webpage instead 
+- done */
+
+
+
+const wordDiv = document.querySelector(".textinput"); //selects div for text
+const playerSelection = document.querySelector(".player-input"); //selects p tag for playerinput
+const computerSelection = document.querySelector(".computer-input"); //selects p tag for computerinput
+const winnerDeclaration = document.querySelector(".winner"); //selects p tag to declare winner
+const compScore = document.querySelector(".compscore"); //selects p tag to add current score
+const playerScore = document.querySelector(".playerscore"); //selects p tag to add current score
+
 
 const firstButton = document.querySelector('.button1');
 firstButton.addEventListener('click', () => {
-  console.log('you pircked rock');
-  playround('rock', AI())
-});
+  playerSelection.textContent = "Player picked Rock";
+  (playround('rock', AI()))
+}); 
 const secondButton = document.querySelector('.button2')
 secondButton.addEventListener('click', () => {
-  console.log('you pircked paper');
-  playround('paper', AI())
+  playerSelection.textContent = "Player picked Paper";
+  (playround('paper', AI()))
 });
 const thirdButton = document.querySelector('.button3')
 thirdButton.addEventListener('click', () => {
-  console.log('you pircked scissors');
-  playround('scissors', AI())
+  playerSelection.textContent = "Player picked Scissors";
+  (playround('scissors', AI()))
 });
-
 function AI(){ /* this produces a random output or rock, paper or scissors*/
 let numberGen = Math.floor(Math.random() * 3 + 1);
 /* ^ this produces a ranom number, mathfloor = round down (nearest integer)*/
 /*math.random produces a random number to 3, we have set +1 as it starts from 0
 therefore it produces a number from 1-3*/
 if (numberGen === 1 ) {
-    console.log("computer picked rock");
+  computerSelection.textContent = "Computer picked Rock"; // declares comp choice in html doc
     return  "rock"; }
 if (numberGen === 2) {
-    console.log("computer picked paper");
+    computerSelection.textContent = "Computer picked Paper";
     return "paper"; }
  if (numberGen === 3) {
-    console.log("computer picked scissors");
+    computerSelection.textContent = "Computer picked Scissors";
     return "scissors"; }
 }
+
+let gamer = 0
+let computer = 0
+
 function playround(playerSelection, computerSelection){
   if (playerSelection == computerSelection) {
-      console.log("TIE"); 
-      return "TIE"}
+      winnerDeclaration.textContent = "Game TIE!";} // this variable declares the game winner in the html doc
     if (playerSelection === "paper" && computerSelection === "scissors"){
-      console.log ("Computer Wins");
-      return "computer wins";}
+      winnerDeclaration.textContent = "Computer wins!", computer++ ;  }
     if (playerSelection === "paper" && computerSelection === "rock"){
-      console.log ("You win");
-      return "player wins";}
+      winnerDeclaration.textContent = "Player wins",gamer++; }
     if (playerSelection === "scissors" && computerSelection === "paper"){
-    console.log ("You win");
-      return "player wins";}
+      winnerDeclaration.textContent = "Player wins",gamer++; }
     if (playerSelection === "scissors" && computerSelection === "rock"){
-      console.log ("Computer Wins");
-      return "computer wins";}
+      winnerDeclaration.textContent = "Computer wins!",computer++; }
     if (playerSelection === "rock" && computerSelection === "scissors"){
-      console.log ("You win");
-      return "player wins";}
+      winnerDeclaration.textContent = "Player wins",gamer++; }
     if (playerSelection === "rock" && computerSelection === "paper"){
-    console.log ("Computer Wins");
-      return "computer wins";}
-}      
+      winnerDeclaration.textContent = "Computer wins!",computer++; }    
+
+      
+      playerScore.textContent = gamer;
+      compScore.textContent = computer;
 
 
+}
 
+// function game(){
 
+//     // for (let i = 0; i < 5; i++) { 
+//     if (winnerDeclaration === "Player wins") {
+//         gamer++;
+//     } else if (winnerDeclaration === "Computer wins!") {
+//         computer++;
+//     } if (winnerDeclaration === "Game TIE!") {
+//     }
+  
+//     // if (gamer > computer);
+//     // console.log("YOU WON THE GAME!", gamer);
+//     // if (computer > gamer);
+//     // console.log("COMPUTER WINS THE GAME!",computer);
+//     // if (computer === gamer);
+//   }  
 
-
-
-
+// /*  need to keep the score everytime the playround function outputs something.*/
 
 
 
