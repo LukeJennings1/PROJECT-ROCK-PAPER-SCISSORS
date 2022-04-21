@@ -1,6 +1,6 @@
 /* need to add a display so that current console.logs are displayed on the webpage instead 
 - done */
-
+/*next I need to create the best of 5 and display a game winner after 5*/
 
 
 const wordDiv = document.querySelector(".textinput"); //selects div for text
@@ -40,10 +40,18 @@ if (numberGen === 2) {
  if (numberGen === 3) {
     computerSelection.textContent = "Computer picked Scissors";
     return "scissors"; }
-}
+};
 
 let gamer = 0
 let computer = 0
+ /* these scores must be placed in the global scope as if they were placed inside of a function
+   we would have to loop them. By placing them in the global scope they hold the value of the round
+   output when the playround function is repeatedly called to output an answer (instead of resetting 
+    the score everytime the playround function is called) */ 
+playerScore.textContent = gamer; // placeholder to display score 0 prior to playround function initialising
+compScore.textContent = computer; // placeholder to display score 0 prior to playround function initialising
+  /* note^ these textContents are just placeholders so that we can display 0:0 score prior to 
+  the textContent elements in the playround function updating the score */
 
 function playround(playerSelection, computerSelection){
   if (playerSelection == computerSelection) {
@@ -63,78 +71,9 @@ function playround(playerSelection, computerSelection){
 
       
       playerScore.textContent = gamer;
-      compScore.textContent = computer;
-
-
-}
-
-// function game(){
-
-//     // for (let i = 0; i < 5; i++) { 
-//     if (winnerDeclaration === "Player wins") {
-//         gamer++;
-//     } else if (winnerDeclaration === "Computer wins!") {
-//         computer++;
-//     } if (winnerDeclaration === "Game TIE!") {
-//     }
-  
-//     // if (gamer > computer);
-//     // console.log("YOU WON THE GAME!", gamer);
-//     // if (computer > gamer);
-//     // console.log("COMPUTER WINS THE GAME!",computer);
-//     // if (computer === gamer);
-//   }  
-
-// /*  need to keep the score everytime the playround function outputs something.*/
-
-
-
-
-
-
-
-
-
-// // function game(){ 
-// // let gamer = 0
-// // let computer = 0
-// // /* ^ these are the score card variables */
-
-// //   for (let i = 0; i < 5; i++) { /* i = 0 (i starts at 0 and loops till it hits 5. i++ adds one per cycle to the total)*/
-// //   let roundoutput = playround(player(),AI()); /* we have called the function under the for loop so that it is included... 
-// //   in short, if we want something to be included in the loop we must call it inside the loop function
-// //   hence calling all three functions */
-// //   if (roundoutput === "player wins") {
-// //       gamer++;   /* these add 1 to the score card if the arguement is proved true */
-// //       console.log("YOU WON!");
-// //   } else if (roundoutput === "computer wins") {
-// //       computer++;
-// //       console.log("YOU WON!"); /* the log is just to display to us who has won */
-// //   } if (roundoutput === "TIE") {
-// //       console.log("TIE"); 
-// //   }
-// // /* this below section says that if gamerscore is more than computer, display a string 
-// // the gamer and computer call in the console.log shows the score that is being kept by
-// // the let gamer and computer variables. */
-// //   if (gamer > computer);
-// //   console.log("YOU WON THE GAME!", gamer);
-// //   if (computer > gamer);
-// //   console.log("COMPUTER WINS THE GAME!",computer);
-// //   if (computer === gamer);
-// //   console.log("TIE!");
-// // }
-// // }
-// // game()
-// // /* this calls the game function to allow it to run, otherwise it would simply sit
-// // out of scope. Note that functions need to be called always to work */
-
-
-// const firstButton = document.querySelector('button_one');
-// firstButton.addEventListener('click', () =>  alert("Rock")
-
-// let secondButton = document.querySelector('button_two')
-// secondButton.addEventListener('click', () => alert("Paper")
-
-// const thirdButton = document.querySelector('button_three')
-// thirdButton.addEventListener('click', () => alert("Scissors")
- 
+      compScore.textContent = computer; 
+      /* these two textContents update the html doc with the gamer and computer score everytime
+      the playround function is called. if they were not placed inside the playround function 
+      the score would stay static at 0 as it is updating them in the global score were there
+      is no input telling them to increase (computer++ or gamer++) */ 
+  };
