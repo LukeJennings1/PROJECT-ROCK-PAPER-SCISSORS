@@ -41,7 +41,6 @@ if (numberGen === 2) {
     computerSelection.textContent = "Computer picked Scissors";
     return "scissors"; }
 };
-
 function playround(playerSelection, computerSelection){
     if (playerSelection == computerSelection) {
       winnerDeclaration.textContent = "Game TIE!";} // this variable declares the game winner in the html doc
